@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Work Skills</title>
+    <style>
+        th.title {
+            text-align: center;
+            font-size: 2em;
+            padding: 10px;
+            color: #ffffff;
+            background-color: #000000;
+            font-weight: bold;
+        }
+        table {
+            width: 40%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            color: black;
+        }
+        th {
+            background-color: #999999;
+        }
+        td {
+            background-color: #d3d3d3;
+            text-align: center;
+        }
+        td span, td img {
+            vertical-align: middle;
+        }
+        td img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+        }
+        /* Main content area */
+        #main-content {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="6" class="title">Advanced Work Skills</th>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <th>Skill</th>
+                <th>Items Required to Learn</th>
+                <th>Learning & Producing Location</th>
+                <th>Guild Location</th>
+                <th>Golden Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="titles/t010.png" ></td>
+                <td><a href="apothecary.html" class="skill-link">Apothecary</a></td>
+                <td><span>20x</span> <img src="workskills/shell_herb.gif" ></td>
+                <td>Gion, Greenville, Illium Healer</td>
+                <td>Bluebird</td>
+                <td><img src="titles/t058.png" ></td>
+            </tr>
+            <tr>
+                <td><img src="titles/t025.png" ></td>
+                <td><a href="brewing.html" class="skill-link">Brewing</a></td>
+                <td><span>10x</span> <img src="workskills/rice.gif" ></td>
+                <td>Gion, Greenville, Illium Tavern</td>
+                <td>Goldburg Tavern (NPC Will)</td>
+                <td><img src="titles/t073.png" ></td>
+            </tr>
+            <tr>
+                <td><img src="titles/t018.png" ></td>
+                <td><a href="cooking.html" class="skill-link">Cooking</a></td>
+                <td><span>10x</span> <img src="workskills/mutton.gif" ></td>
+                <td>Gion, Greenville, Illium Deli</td>
+                <td>Rainbow City (NPC Anna)</td>
+                <td><img src="titles/t066.png" ></td>
+            </tr>
+            <tr>
+                <td><img src="titles/t020.png" ></td>
+                <td><a href="gem_cutting.html" class="skill-link">Gem Cutting</a></td>
+                <td><span>10x</span> <img src="workskills/amethyst_ore.gif" ></td>
+                <td>Illium Jewelry</td>
+                <td>Goldburg Jeweler (NPC Vic)</td>
+                <td><img src="titles/t068.png" ></td>
+            </tr>
+            <tr>
+                <td><img src="titles/t019.png" ></td>
+                <td><a href="metalworking.html" class="skill-link">Metalworking</a></td>
+                <td><span>10x</span> <img src="workskills/copper_ore.gif" ></td>
+                <td>Gion, Greenville, Illium Blacksmith</td>
+                <td>Goldburg Blacksmith (NPC Oswald)</td>
+                <td><img src="titles/t067.png" ></td>
+            </tr>
+            <tr>
+                <td><img src="titles/t016.png" ></td>
+                <td><a href="weaving.html" class="skill-link">Weaving</a></td>
+                <td><span>10x</span> <img src="workskills/sheep_wool.gif" ></td>
+                <td>Gion, Greenville, Illium Tailor</td>
+                <td>Bluebird</td>
+                <td><img src="titles/t064.png" ></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Main content area where the content of clicked links will be displayed -->
+    <div id="main-content">
+        <p>Select a skill from the table above to learn more.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for all skill links
+            const skillLinks = document.querySelectorAll('.skill-link');
+            
+            // Loop through all skill links and add a click event listener
+            skillLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();  // Prevent the default link behavior
+                    const url = this.getAttribute('href');  // Get the URL of the clicked link
+                    
+                    console.log(`Link clicked: ${url}`);  // Debugging: Log the URL
+    
+                    loadContent(url);  // Load the content into the main content area
+                });
+            });
+    
+            // Function to load content dynamically into the main content area
+            function loadContent(url) {
+                const mainContent = document.getElementById('main-content');
+                mainContent.innerHTML = '<p>Loading content...</p>';  // Show loading message
+    
+                // Fetch the content from the URL
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Content not found');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        console.log('Content loaded successfully');  // Debugging: Log success message
+                        mainContent.innerHTML = data;  // Inject the fetched content into the main content area
+                    })
+                    .catch(error => {
+                        console.error('Error loading content:', error);  // Debugging: Log error
+                        mainContent.innerHTML = '<p>Error loading content. Please try again later.</p>';  // Show error message
+                    });
+            }
+        });
+    </script>
+
+</body>
+</html>

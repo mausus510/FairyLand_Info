@@ -1,0 +1,150 @@
+/* Reset some styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #000000;  /* Black background */
+    color: white;  /* White text */
+}
+
+/* Titlebar Image Styling */
+.title-image {
+    width: 25%; /* Set the width of the image */
+    max-width: 100%; /* Ensure the image doesn't exceed its container width */
+    display: block; /* Make the image a block element */
+    margin-bottom: 20px; /* Add spacing below the image */
+    margin-left: auto; /* Center the image horizontally */
+    margin-right: auto; /* Center the image horizontally */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+/* Center the title text */
+h1 {
+    text-align: center;  /* Center the title horizontally */
+    color: white;  /* Ensure the title text is white */
+    margin-top: 20px;  /* Optional: add space above the title */
+}
+
+/* Container to hold the main content and sidebar */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    height: 100vh;  /* Ensure the container takes the full viewport height */
+    overflow: hidden;  /* Hide overflow in the main container */
+}
+
+/* Main content */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;  /* Allow scrolling for main content if needed */
+    color: white;  /* Ensure text in the content area is white */
+    display: flex;  /* Enable Flexbox */
+    justify-content: none;  /* Centers the content horizontally */
+    align-items: center;  /* Centers the content vertically */
+    text-align: none;  /* Ensures the text inside the div is centered */
+    height: 100%;  /* Ensure the content area takes up the full height */
+    flex-direction: column;  /* Stack items vertically */
+}
+
+/* Sidebar (Menu) */
+.sidebar-container {
+    width: 250px;
+    background-color: #000000;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+/* Sidebar content */
+.sidebar-content {
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main menu list */
+.menu {
+    list-style: none;
+}
+
+/* Main menu items */
+.menu-item {
+    margin-bottom: 10px;
+}
+
+/* Main menu links */
+.menu-item > a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    padding: 10px;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    position: relative;
+    padding-left: 30px;
+}
+
+/* Toggle symbol styling */
+.toggle-symbol {
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Sub-menu (hidden by default) */
+.submenu {
+    padding-left: 20px;
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;  /* Apply once */
+}
+
+/* Visible sub-menu (shown when expanded) */
+.submenu.visible {
+    display: block;
+}
+
+
+/* Sub-menu links */
+.submenu li a {
+    color: #ffffff;
+    text-decoration: none;  /* Remove underline */
+    font-size: 14px;
+}
+
+.submenu li a:hover {
+    color: #00ff00;  /* Optional: Add hover effect */
+}
+
+/* Scrollbar for long submenus */
+.submenu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+    th, td {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+}
